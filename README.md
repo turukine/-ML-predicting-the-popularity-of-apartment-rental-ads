@@ -1,87 +1,69 @@
-Project Goal
-Master the fundamentals of machine learning and data analysis by building a model to predict the popularity of apartment rental listings.
+# Прогнозирование популярности аренды квартир
 
-Basic Concepts
-What is Machine Learning?
-Methods for automatically discovering patterns in data and using these patterns for prediction.
+## Описание проекта
+Проект по машинному обучению для прогнозирования популярности объявлений об аренде квартир. Включает полный цикл анализа данных, feature engineering и обучение моделей регрессии.
 
-Types of ML Tasks:
-Supervised Learning - has input data (X) and correct answers (y)
+## 🎯 Выполненные задачи
 
-Classification - predicting categories (e.g., disease presence)
+### Анализ данных
+- Загрузка и исследование датасета с Kaggle (train.json)
+- Анализ размеров данных и проверка на пропущенные значения
+- Выбор ключевых признаков: 'bathrooms', 'bedrooms', 'interest_level', 'price'
+- Исследование распределения целевой переменной (price)
+- Очистка данных от выбросов (1-99 процентили)
 
-Regression - predicting numerical values (e.g., prices)
+### Статистический анализ
+- Построение гистограмм и boxplot'ов для целевой переменной
+- Детальный анализ выбросов
+- Исследование распределения признаков
+- Создание матриц корреляции
 
-Unsupervised Learning - only input data without answers
+### Feature Engineering
+- Добавление полиномиальных признаков с использованием PolynomialFeatures
+- Разделение данных на обучающую и тестовую выборки
 
-Clustering - grouping data
+## 🤖 Обученные модели
 
-Association - finding relationships between data
+### Сравнительный анализ трех подходов:
+1. **Линейная регрессия** - базовый подход
+2. **Дерево решений** (random_state=21) - нелинейная модель
+3. **Наивные модели** - предсказание средним и медианой (бенчмарк)
 
-Dimensionality Reduction - simplifying data
+### Метрики оценки:
+- **MAE** (Mean Absolute Error) - Средняя абсолютная ошибка
+- **RMSE** (Root Mean Square Error) - Среднеквадратичная ошибка
 
-Practical Task
-1. Introduction
-Provide 5 examples of ML applications in real life
+## 📊 Результаты
 
-Classify tasks from the theory section
+Сравнение производительности моделей на обучающей и тестовой выборках с определением оптимального подхода для прогнозирования цен на аренду квартир.
 
-Explain the difference between multiclass and multilabel classification
+## 🔬 Дополнительные эксперименты
 
-Determine the type of house price prediction task
+- Создание новых признаков для улучшения качества прогноза
+- Использование полного набора доступных данных
+- Оптимизация гиперпараметров моделей
 
-2. Data Analysis
-Required libraries:
+## 🛠 Технологический стек
 
-python
+```python
 import pandas as pd
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt
 import seaborn as sns
-Steps:
 
-Load data from Kaggle (train.json)
+# Установка зависимостей
+pip install pandas numpy scikit-learn matplotlib seaborn
 
-Analyze data size, check for missing values
+# Запуск анализа
+jupyter notebook data_analysis.ipynb
 
-Select columns: 'bathrooms', 'bedrooms', 'interest_level', 'price'
+# Обучение моделей
+python model_training.py
 
-Study the distribution of the target variable (price)
-
-Remove outliers (1st-99th percentiles)
-
-3. Statistical Analysis
-Build histograms and boxplots for the target variable
-
-Analyze outliers
-
-Study feature distributions
-
-Build correlation matrices
-
-4. Feature Engineering
-Add polynomial features (PolynomialFeatures)
-
-Split data into training and test sets
-
-5. Model Training
-Train and compare three models:
-
-Linear Regression
-
-Decision Tree (random_state=21)
-
-Naive models (predicting using mean and median)
-
-Quality metrics:
-
-MAE (Mean Absolute Error)
-
-RMSE (Root Mean Square Error)
-
-Result
-Compare models using MAE and RMSE metrics on training and test sets, determine the best model.
-
-Additional
-Experiment with creating new features and using all available data.
+apartment_rental_analysis/
+├── data_analysis.ipynb      # Анализ и визуализация данных
+├── model_training.py        # Обучение моделей
+├── feature_engineering.py   # Создание признаков
+├── results/                 # Результаты и метрики
+└── data/                    # Датасеты
